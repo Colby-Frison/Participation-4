@@ -23,7 +23,7 @@ if ! curl -s "$BASE_URL/api/rules" > /dev/null 2>&1; then
 fi
 
 echo ""
-echo "✅ Server is running!"
+echo " Server is running!"
 echo ""
 
 # Step 1: Show initial rules
@@ -71,7 +71,7 @@ curl -s -X POST "$BASE_URL/api/rules/add" \
     "name": "All Systems Critical",
     "condition": "projectActive AND taskOverdue AND kpiBreach AND dependencyBlocked",
     "actions": [
-      "🚨 RED ALERT",
+      "RED ALERT",
       "Notify Everyone",
       "Emergency Shutdown Protocols"
     ]
@@ -172,14 +172,14 @@ echo ""
 
 echo ""
 echo "════════════════════════════════════════════════════════════"
-echo "  Demonstration Complete! 🎉"
+echo "  Demonstration Complete! "
 echo "════════════════════════════════════════════════════════════"
 echo ""
 echo "Key Takeaways:"
-echo "  ✅ Rules were added WITHOUT restarting the server"
-echo "  ✅ Rules were added WITHOUT recompiling any code"
-echo "  ✅ Changes are visible immediately in the console"
-echo "  ✅ New rules can be tested right away"
+echo " Rules were added WITHOUT restarting the server"
+echo " Rules were added WITHOUT recompiling any code"
+echo " Changes are visible immediately in the console"
+echo " New rules can be tested right away"
 echo ""
 echo "This demonstrates the power of the Interpreter Pattern:"
 echo "  • Dynamic rule modification at runtime"
