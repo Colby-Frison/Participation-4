@@ -13,7 +13,7 @@ echo "  cd src && java RuleApiServer"
 echo ""
 read -p "Press Enter to continue once the server is running..."
 
-BASE_URL="http://localhost:8080"
+BASE_URL="http://localhost:8081"
 
 # Check if server is running
 if ! curl -s "$BASE_URL/api/rules" > /dev/null 2>&1; then
