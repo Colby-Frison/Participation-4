@@ -333,7 +333,6 @@ See **[API.md](API.md)** for complete documentation and examples.
 1. Navigate to project root
 2. Run: `scripts\build-and-run-interpreter.bat`
 3. Show output demonstrating dynamic rule evaluation
-4. Refer to `docs/PRESENTATION_GUIDE.md` for detailed script
 
 ---
 
@@ -349,7 +348,6 @@ See **[API.md](API.md)** for complete documentation and examples.
 ## Learn More
 
 - See **`docs/IMPLEMENTATION.md`** for technical details
-- See **`docs/PRESENTATION_GUIDE.md`** for presentation tips
 - See textbook Section 15.10 on Interpreter Pattern
 
 ---
