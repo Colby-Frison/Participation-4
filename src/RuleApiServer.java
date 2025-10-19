@@ -376,38 +376,47 @@ public class RuleApiServer {
     private static Expression parseExpression(String condition) {
         condition = condition.trim();
         
+        // Handle outer parentheses
+        if (condition.startsWith("(") && condition.endsWith(")") && matchingParens(condition)) {
+            return parseExpression(condition.substring(1, condition.length() - 1));
+        }
+        
         // Handle NOT expression
         if (condition.toUpperCase().startsWith("NOT ")) {
             String inner = condition.substring(4).trim();
             return new NotExpression(parseExpression(inner));
         }
         
-        // Handle AND expression
-        if (condition.toUpperCase().contains(" AND ")) {
-            String[] parts = splitByOperator(condition, " AND ");
-            Expression left = parseExpression(parts[0]);
-            Expression right = parseExpression(parts[1]);
+        // Try to split by AND or OR (at top level, not inside parentheses)
+        String[] andParts = trySplitByOperator(condition, " AND ");
+        if (andParts != null) {
+            Expression left = parseExpression(andParts[0]);
+            Expression right = parseExpression(andParts[1]);
             return new AndExpression(left, right);
         }
         
-        // Handle OR expression
-        if (condition.toUpperCase().contains(" OR ")) {
-            String[] parts = splitByOperator(condition, " OR ");
-            Expression left = parseExpression(parts[0]);
-            Expression right = parseExpression(parts[1]);
+        String[] orParts = trySplitByOperator(condition, " OR ");
+        if (orParts != null) {
+            Expression left = parseExpression(orParts[0]);
+            Expression right = parseExpression(orParts[1]);
             return new OrExpression(left, right);
-        }
-        
-        // Handle parentheses
-        if (condition.startsWith("(") && condition.endsWith(")")) {
-            return parseExpression(condition.substring(1, condition.length() - 1));
         }
         
         // Terminal expression
         return new TerminalExpression(condition);
     }
     
-    private static String[] splitByOperator(String condition, String operator) {
+    private static boolean matchingParens(String str) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') count++;
+            else if (str.charAt(i) == ')') count--;
+            if (count == 0 && i < str.length() - 1) return false;
+        }
+        return count == 0;
+    }
+    
+    private static String[] trySplitByOperator(String condition, String operator) {
         int level = 0;
         String upperCondition = condition.toUpperCase();
         String upperOperator = operator.toUpperCase();
@@ -424,7 +433,7 @@ public class RuleApiServer {
             }
         }
         
-        throw new IllegalArgumentException("Invalid condition: " + condition);
+        return null;
     }
     
     private static void printCurrentRules() {
