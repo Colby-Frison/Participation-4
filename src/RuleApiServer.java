@@ -78,7 +78,7 @@ public class RuleApiServer {
                     </style>
                 </head>
                 <body>
-                    <h1>🚀 Rule Engine API - Live Rule Adding Demo</h1>
+                    <h1>Rule Engine API - Live Rule Adding Demo</h1>
                     <p>This API demonstrates the power of the Interpreter Pattern by allowing rules to be added and modified at runtime.</p>
                     
                     <h2>Available Endpoints</h2>
