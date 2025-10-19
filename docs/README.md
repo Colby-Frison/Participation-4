@@ -19,15 +19,18 @@ Participation 4/
 │   ├── Rule.java
 │   ├── RuleEngine.java
 │   ├── InterpreterDashboard.java
-│   └── DailyOperationsDashboard.java
+│   ├── DailyOperationsDashboard.java
+│   └── RuleApiServer.java  # NEW: HTTP API for live rule adding
 ├── build/                  # Compiled class files
 ├── docs/                   # Documentation
 │   ├── IMPLEMENTATION.md
 │   ├── PRESENTATION_GUIDE.md
+│   ├── API.md              # NEW: API documentation
 │   ├── Instructions.md
 │   └── Section 5-10.md
 ├── scripts/                # Build and run scripts
-│   └── build-and-run-interpreter.bat
+│   ├── build-and-run-interpreter.bat
+│   └── demo.sh             # NEW: Interactive API demo script
 └── README.md              # This file
 ```
 
@@ -49,6 +52,20 @@ javac -d build src\*.java
 # Run
 java -cp build InterpreterDashboard
 ```
+
+### Option 3: Live Rule Adding API Demo (NEW!)
+```bash
+# Compile and start the API server
+cd src
+javac *.java
+java RuleApiServer
+
+# In another terminal, run the interactive demo
+cd scripts
+./demo.sh
+```
+
+See **[API.md](docs/API.md)** for complete API documentation.
 
 ---
 
@@ -77,6 +94,12 @@ All documentation is in the **`docs/`** directory:
   - Pattern components explained
   - Expression tree examples
   - Usage examples
+
+- **[API.md](docs/API.md)** - **NEW: Live Rule Adding API Documentation**
+  - HTTP API endpoints
+  - How to add rules at runtime
+  - Complete examples and demo walkthrough
+  - Demonstrates the power of the Interpreter Pattern
 
 - **[PRESENTATION_GUIDE.md](docs/PRESENTATION_GUIDE.md)** - 4-minute presentation guide
   - Slide-by-slide breakdown
@@ -236,6 +259,7 @@ This mapping transforms static decision table logic into dynamic, extensible bus
 | **Rule** | `src/Rule.java` | Business rules |
 | **RuleEngine** | `src/RuleEngine.java` | Rule evaluation |
 | **Client** | `src/InterpreterDashboard.java` | Main implementation |
+| **API Server** | `src/RuleApiServer.java` | **NEW: HTTP API for live rule adding** |
 
 ---
 
@@ -286,6 +310,27 @@ java -cp build InterpreterDashboard
 | Difficult to maintain | Easy to extend |
 | Logic mixed with code | Clear separation |
 | Hard to test | Simple to test |
+
+### Live Rule Adding Demo (NEW!)
+
+The **RuleApiServer** demonstrates the ultimate power of the Interpreter Pattern:
+
+✅ **Add rules while the application is running**
+- No restart required
+- No recompilation needed
+- Changes take effect immediately
+
+✅ **HTTP API for easy demonstration**
+- Simple REST endpoints
+- JSON-based rule definitions
+- Real-time console feedback
+
+✅ **Perfect for presentations**
+- Interactive demo script included
+- Shows dynamic rule modification
+- Highlights pattern benefits
+
+See **[API.md](API.md)** for complete documentation and examples.
 
 ---
 
