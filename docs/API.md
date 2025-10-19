@@ -17,7 +17,7 @@ javac RuleApiServer.java
 java RuleApiServer
 ```
 
-The server will start on **http://localhost:8080**
+The server will start on **http://localhost:8081**
 
 You should see output like:
 ```
@@ -25,7 +25,7 @@ You should see output like:
 ║  Rule Engine API Server - Live Rule Adding Demo           ║
 ╚════════════════════════════════════════════════════════════╝
 
-Server started on http://localhost:8080
+Server started on http://localhost:8081
 
 Available endpoints:
   GET  /                    - API documentation
@@ -43,7 +43,7 @@ Available endpoints:
 
 **Endpoint:** `GET /`
 
-Open in your browser: **http://localhost:8080/**
+Open in your browser: **http://localhost:8081/**
 
 This provides a nice HTML interface with all API documentation.
 
@@ -57,7 +57,7 @@ Lists all currently loaded rules in the engine.
 
 **Example Request:**
 ```bash
-curl http://localhost:8080/api/rules
+curl http://localhost:8081/api/rules
 ```
 
 **Example Response:**
@@ -106,7 +106,7 @@ Add a new rule to the engine **while it's running**. This demonstrates the key b
 
 #### Simple Rule
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Simple Active Check",
@@ -117,7 +117,7 @@ curl -X POST http://localhost:8080/api/rules/add \
 
 #### Rule with AND
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Emergency Situation",
@@ -132,7 +132,7 @@ curl -X POST http://localhost:8080/api/rules/add \
 
 #### Rule with NOT
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Healthy Project",
@@ -143,7 +143,7 @@ curl -X POST http://localhost:8080/api/rules/add \
 
 #### Complex Rule with Multiple Operators
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Critical Issues",
@@ -203,7 +203,7 @@ Test how the rules evaluate with specific conditions. The engine will return act
 
 **Example Request:**
 ```bash
-curl -X POST http://localhost:8080/api/rules/test \
+curl -X POST http://localhost:8081/api/rules/test \
   -H "Content-Type: application/json" \
   -d '{
     "projectActive": true,
@@ -251,7 +251,7 @@ Removes all rules from the engine. Use with caution!
 
 **Example Request:**
 ```bash
-curl -X POST http://localhost:8080/api/rules/clear
+curl -X POST http://localhost:8081/api/rules/clear
 ```
 
 **Response:**
@@ -282,13 +282,13 @@ java RuleApiServer
 
 ### Step 2: View Initial Rules
 ```bash
-curl http://localhost:8080/api/rules
+curl http://localhost:8081/api/rules
 ```
 You'll see 6 default rules loaded.
 
 ### Step 3: Test a Scenario
 ```bash
-curl -X POST http://localhost:8080/api/rules/test \
+curl -X POST http://localhost:8081/api/rules/test \
   -H "Content-Type: application/json" \
   -d '{
     "projectActive": true,
@@ -302,7 +302,7 @@ Expected result: Actions for "Task Overdue" rule.
 
 ### Step 4: Add a New Rule (While Server is Running!)
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Weekend Alert",
@@ -318,7 +318,7 @@ curl -X POST http://localhost:8080/api/rules/add \
 
 ### Step 5: Verify the New Rule
 ```bash
-curl http://localhost:8080/api/rules
+curl http://localhost:8081/api/rules
 ```
 Now you'll see 7 rules, including your new "Weekend Alert" rule.
 
@@ -366,16 +366,16 @@ The rules are evaluated in order, so depending on where your rule was added, it 
 pip install httpie
 
 # List rules
-http :8080/api/rules
+http :8081/api/rules
 
 # Add rule
-http POST :8080/api/rules/add \
+http POST :8081/api/rules/add \
   name="Test Rule" \
   condition="projectActive" \
   actions:='["Action 1", "Action 2"]'
 
 # Test rules
-http POST :8080/api/rules/test \
+http POST :8081/api/rules/test \
   projectActive:=true \
   taskOverdue:=false \
   kpiBreach:=false \
@@ -397,7 +397,7 @@ You can prepare rule definitions in JSON files:
 
 Then load it:
 ```bash
-curl -X POST http://localhost:8080/api/rules/add \
+curl -X POST http://localhost:8081/api/rules/add \
   -H "Content-Type: application/json" \
   -d @rule.json
 ```
@@ -407,11 +407,11 @@ curl -X POST http://localhost:8080/api/rules/add \
 ## 🐛 Troubleshooting
 
 ### Port Already in Use
-If port 8080 is already in use, edit `RuleApiServer.java` and change:
+If port 8081 is already in use, edit `RuleApiServer.java` and change:
 ```java
-private static final int PORT = 8080;
+private static final int PORT = 8081;
 ```
-to another port like 8081, then recompile.
+to another port like 8082, then recompile.
 
 ### Connection Refused
 Make sure the server is running:
@@ -430,7 +430,7 @@ Make sure to use proper operators:
 
 ### Scenario 1: Project in Crisis
 ```bash
-curl -X POST http://localhost:8080/api/rules/test \
+curl -X POST http://localhost:8081/api/rules/test \
   -H "Content-Type: application/json" \
   -d '{
     "projectActive": true,
@@ -442,7 +442,7 @@ curl -X POST http://localhost:8080/api/rules/test \
 
 ### Scenario 2: Healthy Project
 ```bash
-curl -X POST http://localhost:8080/api/rules/test \
+curl -X POST http://localhost:8081/api/rules/test \
   -H "Content-Type: application/json" \
   -d '{
     "projectActive": true,
@@ -454,7 +454,7 @@ curl -X POST http://localhost:8080/api/rules/test \
 
 ### Scenario 3: Inactive Project
 ```bash
-curl -X POST http://localhost:8080/api/rules/test \
+curl -X POST http://localhost:8081/api/rules/test \
   -H "Content-Type: application/json" \
   -d '{
     "projectActive": false,

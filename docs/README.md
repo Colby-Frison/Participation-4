@@ -65,7 +65,7 @@ cd scripts
 ./demo.sh
 ```
 
-See **[API.md](docs/API.md)** for complete API documentation.
+See **[API.md](API.md)** for complete API documentation.
 
 ---
 
@@ -89,27 +89,21 @@ See **[API.md](docs/API.md)** for complete API documentation.
 
 All documentation is in the **`docs/`** directory:
 
-- **[IMPLEMENTATION.md](docs/IMPLEMENTATION.md)** - Complete technical documentation
+- **[IMPLEMENTATION.md](IMPLEMENTATION.md)** - Complete technical documentation
   - Architecture overview
   - Pattern components explained
   - Expression tree examples
   - Usage examples
 
-- **[API.md](docs/API.md)** - **NEW: Live Rule Adding API Documentation**
+- **[API.md](API.md)** - **NEW: Live Rule Adding API Documentation**
   - HTTP API endpoints
   - How to add rules at runtime
   - Complete examples and demo walkthrough
   - Demonstrates the power of the Interpreter Pattern
 
-- **[PRESENTATION_GUIDE.md](docs/PRESENTATION_GUIDE.md)** - 4-minute presentation guide
-  - Slide-by-slide breakdown
-  - Speaking points
-  - Demo script
-  - Q&A preparation
+- **[Instructions.md](Instructions.md)** - Original assignment requirements
 
-- **[Instructions.md](docs/Instructions.md)** - Original assignment requirements
-
-- **[Section 5-10.md](docs/Section5-10.md)** - Textbook notes on Interpreter Pattern
+- **[Section 5-10.md](Section%205-10.md)** - Textbook notes on Interpreter Pattern
 
 ---
 
@@ -339,7 +333,6 @@ See **[API.md](API.md)** for complete documentation and examples.
 1. Navigate to project root
 2. Run: `scripts\build-and-run-interpreter.bat`
 3. Show output demonstrating dynamic rule evaluation
-4. Refer to `docs/PRESENTATION_GUIDE.md` for detailed script
 
 ---
 
@@ -355,12 +348,11 @@ See **[API.md](API.md)** for complete documentation and examples.
 ## Learn More
 
 - See **`docs/IMPLEMENTATION.md`** for technical details
-- See **`docs/PRESENTATION_GUIDE.md`** for presentation tips
 - See textbook Section 15.10 on Interpreter Pattern
 
 ---
 
 **Status**: Complete and Ready for Presentation
 
-**Last Updated**: October 15, 2025
+**Last Updated**: October 19, 2025
 
